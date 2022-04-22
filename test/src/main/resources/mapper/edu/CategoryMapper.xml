@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdd.ylz.modules.edu.dao.CategoryMapper">
+
+    <insert id="insertCategory">
+        insert into category (
+            id,
+            name,
+            pid,
+            create_by,
+            update_by,
+            order_num
+        )SELECT
+        #{category.id},
+      #{category.name},
+      #{category.pid},
+      #{category.createBy},
+      #{category.updateBy},
+      (select IFNULL((select max(order_num) from category where pid=#{category.pid}),0)+1)
+    </insert>
+
+</mapper>

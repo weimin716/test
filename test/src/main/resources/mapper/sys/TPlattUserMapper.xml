@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdd.ylz.modules.sys.dao.TPlattUserMapper">
+
+    <select id="getList" resultType="com.gdd.ylz.modules.sys.entity.TPlattUser">
+        select *  from  t_platt_user where 1=1
+        <if test="plattuser.username!=null and plattuser.username!=''">
+            and username like concat('%',#{plattuser.username},'%')
+        </if>
+        <if test="plattuser.phone!=null and plattuser.phone!=''">
+            and phone like concat('%',#{plattuser.phone},'%')
+        </if>
+        and i_flag=1
+    </select>
+
+</mapper>

@@ -1,0 +1,148 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-connections: 300
+    max-http-form-post-size: 300
+    accept-count: 300
+    threads:
+      max: 500
+      min-spare: 20
+  port: 1084
+  servlet:
+    context-path:
+  max-http-header-size: 1048576
+version: '@project.version@'
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.gdd.ylz.modules.*.entity
+  configuration.jdbc-type-for-null: null
+  global-config:
+    # 数据库相关配置
+    db-config:
+      #主键类型  NONE:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID", AUTO: MP自动决定;
+      id-type: UUID
+      #字段策略 IGNORED:"忽略判断", NOT_NULL:"非 NULL 判断", NOT_EMPTY:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      capital-mode: true
+      #table-prefix: sys_
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      # 数据库类型
+      db-type: mysql
+    #刷新mapper 调试神器
+    refresh: true
+    # 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    # 打印sql日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring :
+  mail:
+       port: 25
+       username: 17681258045@163.com
+       password: RMCLWMMUBQLWYJRS
+       protocol: smtp
+       default-encoding: utf-8
+       host:  smtp.163.com
+       properties:
+               mail:
+                   smtp:
+                       auth: true
+                       starttls:
+                           enable: true
+                           required: true
+  # ���� dev|test|prod
+  profiles :
+    active : dev
+    #�������������ļ�������ftpHX δ�����ļ�application-ftpHX.yml
+    #include: ftpHX,ftpCloud
+  servlet:
+    multipart:
+      #�������ϴ������ݴ�С
+      max-request-size: 10000MB
+      #�����ļ���С
+      maxFileSize : 30000MB
+        #shiro �����޸ĵĵط�
+    max-connections: 200000
+    max-http-post-size: 9000000
+  #�Ȳ���ģ��
+
+  devtools:
+    restart:
+      #�Ȳ��𿪹�
+      enabled: true
+      #ָ���Ȳ����Ŀ¼
+      additional-paths: src/main/java
+      #ָ��Ŀ¼������
+      exclude: test/**
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    ssl: false
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 1000
+    lettuce:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+jwt:
+  secretKey: 78944878877848fg)
+  accessTokenExpireTime: PT2H
+  refreshTokenExpireTime: PT8H
+  refreshTokenExpireAppTime: P30D
+  issuer: yingxue.org.cn
+swagger:
+  basePackage: com.gdd.ylz
+  title: RESTful API 文档
+  description:  RESTful API 文档
+  version: '@project.version@'
+gdd:
+  #不需要权限验证的模块
+  filter: demo,download,allowApi,login,sys,edu
+  #系统功能模块清单
+  modules:
+    demo: '演示测试模块'
+    download: '自由下载模块'
+    allowApi: '自由访问模块'
+    login: '登录模块'
+    sys: '系统模块'
+    sms: '短信模块'
+    edu: '在线教育模块'
+
+upload:
+   path: upload
+sms:
+  username: 17681258045
+  password: paul0510@613172
+  content: 【魏敏邮箱】您的验证码是{code},５分钟内有效。若非本人操作请忽略此消息。
+  url: http://api.smsbao.com/sms
+
+
+wx:
+  app_id: wweww
+  # 微信开放平台 appsecret
+  app_secret: sss
+  # 微信开放平台 重定向url
+  redirect_url: http://你的服务器名称/api/ucenter/wx/callback
+
+excel:
+   headFont: 12
+   contentFont: 10
+
+
+
+

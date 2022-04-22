@@ -1,0 +1,58 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      first:  #数据源1
+        url: jdbc:mysql://localhost:3306/mail?serverTimezone=Asia/Shanghai&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: "123456"
+        driverClassName: com.mysql.cj.jdbc.Driver
+        filters: stat,slf4j,wall,config
+      second:  #数据源2
+        url: jdbc:sqlserver://36.32.191.122:1433;DatabaseName=WBJH
+        username: "sa"
+        password: "Sa123456"
+        driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        filters: stat,slf4j,wall,config
+      third:  #数据源3
+        url: jdbc:mysql://124.70.212.38:4576/wanbao_cpb?serverTimezone=Asia/Shanghai&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: "aSj)3j71gTI&"
+        driverClassName: com.mysql.cj.jdbc.Driver
+        filters: stat,slf4j,wall,config
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=10000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: true
+      stat-view-servlet:
+        #白名单IP
+        allow: 127.0.0.1
+        #黑名单IP
+        deny: 192.168.70.30
+        url-pattern: /druid/*
+        enabled: true
+        login-username: admin
+        login-password: Mas@12345
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 100000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+      filters: stat,slf4j,wall,config
+      use-global-data-source-stat: true
+      web-stat-filter:
+        enabled: true
+        exclusions: "/error*,*.html,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*,/v2/api-docs,/swagger*"

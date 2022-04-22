@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdd.ylz.modules.sys.dao.TSysPermissionMapper">
+    <select id="getPerList" resultType="com.gdd.ylz.modules.sys.dto.PermissionReDTO">
+        select t1.* ,t2.name pname from t_sys_permission t1
+        left join t_sys_permission t2 on t1.pid=t2.id
+        where 1=1 and t1.i_flag=1
+        <if test="permission.name!=null and permission.name!=''">
+            and t1.name like concat('%',#{permission.name},'%')
+        </if>
+        <if test="permission.pname!=null and permission.pname!=''">
+            and t2.name like concat ('%',#{permission.pname},'%')
+        </if>
+    </select>
+    <select id="getPerDetail" resultType="com.gdd.ylz.modules.sys.dto.PermissionReDTO">
+         select t1.* ,t2.name pname from t_sys_permission t1
+         left join t_sys_permission t2 on t1.pid=t2.id
+         where 1=1 and t1.id=#{id}
+     </select>
+
+
+</mapper>
