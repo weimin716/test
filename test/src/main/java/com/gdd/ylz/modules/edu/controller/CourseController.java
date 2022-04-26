@@ -1,4 +1,3 @@
-/*
 package com.gdd.ylz.modules.edu.controller;
 
 
@@ -15,15 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-*/
 /**
- * <p>
- * 课程表 前端控制器
- * </p>
- *
- * @author xzg
- * @since 2022-04-18
- *//*
+ * @author weimin
+ * @date 2022/4/25 0025 9:49
+ * @param 
+ * @return 
+ * @Version1.0
+ */
+
 
 @RestController
 @RequestMapping("/edu/course")
@@ -71,4 +69,3 @@ public class CourseController extends UserController {
 
 }
 
-*/
