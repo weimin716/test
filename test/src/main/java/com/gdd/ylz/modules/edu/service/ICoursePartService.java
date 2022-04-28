@@ -1,7 +1,9 @@
 package com.gdd.ylz.modules.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gdd.ylz.modules.edu.entity.CoursePart;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gdd.ylz.modules.edu.request.CoursePartQueryRequest;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICoursePartService extends IService<CoursePart> {
 
+    IPage<CoursePart> coursePartPage(CoursePartQueryRequest coursePartQueryRequest);
 }

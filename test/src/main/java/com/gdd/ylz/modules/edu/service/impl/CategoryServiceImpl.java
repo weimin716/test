@@ -2,10 +2,13 @@ package com.gdd.ylz.modules.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gdd.ylz.common.exception.BusinessException;
 import com.gdd.ylz.constants.Constant;
 import com.gdd.ylz.modules.edu.entity.Category;
 import com.gdd.ylz.modules.edu.dao.CategoryMapper;
+import com.gdd.ylz.modules.edu.request.CategoryQueryRequest;
 import com.gdd.ylz.modules.edu.service.ICategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
@@ -59,5 +62,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public void reShuttleOrder(String id) {
         Category category = this.getById(id);
         this.update(new LambdaUpdateWrapper<Category>().setSql("order_num=order_num-1").eq(Category::getPid,category.getPid()).gt(Category::getOrderNum,category.getOrderNum()).eq(Category::getIFlag,Constant.FLAG_YES));
+    }
+
+    @Override
+    public IPage<Category> categoryByPage(CategoryQueryRequest categoryQueryRequest) {
+        Page page=new Page(categoryQueryRequest.getStart(),categoryQueryRequest.getLength());
+        LambdaQueryWrapper<Category> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(StringUtils.isNotEmpty(categoryQueryRequest.getName()),Category::getName,categoryQueryRequest.getName()).eq(StringUtils.isNotEmpty(categoryQueryRequest.getPid()),Category::getPid,categoryQueryRequest.getPid());
+        IPage<Category> categoryIPage = this.page(page, lambdaQueryWrapper);
+        return categoryIPage;
     }
 }

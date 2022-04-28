@@ -19,29 +19,30 @@ public class CourseAddRequest {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "主键")
+    @NotEmpty(message = "课程id不能为空",groups = {OperationType.Update.class})
     private String id;
 
     @ApiModelProperty(value = "课程名")
-    @NotEmpty(message = "课程名不能为空",groups = {OperationType.Insert.class})
+    @NotEmpty(message = "课程名不能为空",groups = {OperationType.Insert.class,OperationType.Update.class})
     private String name;
 
     @ApiModelProperty(value = "浏览次数")
     private Integer viewCount;
 
     @ApiModelProperty(value = "分类id")
-    @NotEmpty(message = "课程分类不能为空",groups = {OperationType.Insert.class})
+    @NotEmpty(message = "课程分类不能为空",groups = {OperationType.Insert.class,OperationType.Update.class})
     private String categoryId;
 
     @ApiModelProperty(value = "缩略图所在文件id")
-    @NotEmpty(message = "课程缩略图不能为空",groups = {OperationType.Insert.class})
+    @NotEmpty(message = "课程缩略图不能为空",groups = {OperationType.Insert.class,OperationType.Update.class})
     private String picFileId;
 
     @ApiModelProperty(value = "所属讲师id")
-    @NotEmpty(message = "所属讲师不能为空",groups = {OperationType.Insert.class})
+    @NotEmpty(message = "所属讲师不能为空",groups = {OperationType.Insert.class,OperationType.Update.class})
     private String teacherId;
 
     @ApiModelProperty(value = "1会员课程2免费课程")
-    @NotEmpty(message = "课程类型不能为空",groups = {OperationType.Insert.class})
+    @NotEmpty(message = "课程类型不能为空",groups = {OperationType.Insert.class,OperationType.Update.class})
     private Integer type;
 
     @ApiModelProperty(value = "课程附件id")

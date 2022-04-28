@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -14,6 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2022-04-18
  */
 @ApiModel(value="CoursePart对象", description="课程课时表")
+@Data
 public class CoursePart implements Serializable {
 
     private static final long serialVersionUID=1L;
@@ -45,91 +47,7 @@ public class CoursePart implements Serializable {
     @ApiModelProperty(value = "更新者id")
     private String updateBy;
 
+    @ApiModelProperty(value = "删除标志位")
+    private Integer iFlag;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(String orderNum) {
-        this.orderNum = orderNum;
-    }
-
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getFileId() {
-        return fileId;
-    }
-
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    @Override
-    public String toString() {
-        return "CoursePart{" +
-        "id=" + id +
-        ", name=" + name +
-        ", orderNum=" + orderNum +
-        ", courseId=" + courseId +
-        ", fileId=" + fileId +
-        ", createTime=" + createTime +
-        ", createBy=" + createBy +
-        ", updateTime=" + updateTime +
-        ", updateBy=" + updateBy +
-        "}";
-    }
 }

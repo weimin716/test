@@ -1,7 +1,9 @@
 package com.gdd.ylz.modules.edu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gdd.ylz.modules.edu.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gdd.ylz.modules.edu.request.CategoryQueryRequest;
 
 /**
  * <p>
@@ -20,4 +22,6 @@ public interface ICategoryService extends IService<Category> {
     void existName(Category category);
 
     void reShuttleOrder(String id);
+
+    IPage<Category> categoryByPage(CategoryQueryRequest categoryQueryRequest);
 }

@@ -2,6 +2,7 @@ package com.gdd.ylz.modules.edu.service;
 
 import com.gdd.ylz.modules.edu.entity.Course;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gdd.ylz.modules.edu.request.CourseAddRequest;
 
 /**
  * <p>
@@ -13,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICourseService extends IService<Course> {
 
-    void existName(Course course);
+    void existName(CourseAddRequest courseAddRequest);
+
+    void checkDeleteAble(String id);
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * <p>
@@ -14,6 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2022-04-18
  */
 @ApiModel(value="Course对象", description="课程表")
+@Data
 public class Course implements Serializable {
 
     private static final long serialVersionUID=1L;
@@ -54,118 +56,6 @@ public class Course implements Serializable {
     @ApiModelProperty(value = "更新者id")
     private String updateBy;
 
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getViewCount() {
-        return viewCount;
-    }
-
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getPicFileId() {
-        return picFileId;
-    }
-
-    public void setPicFileId(String picFileId) {
-        this.picFileId = picFileId;
-    }
-
-    public String getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getFileId() {
-        return fileId;
-    }
-
-    public void setFileId(String fileId) {
-        this.fileId = fileId;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-        "id=" + id +
-        ", name=" + name +
-        ", viewCount=" + viewCount +
-        ", categoryId=" + categoryId +
-        ", picFileId=" + picFileId +
-        ", teacherId=" + teacherId +
-        ", type=" + type +
-        ", fileId=" + fileId +
-        ", createTime=" + createTime +
-        ", createBy=" + createBy +
-        ", updateTime=" + updateTime +
-        ", updateBy=" + updateBy +
-        "}";
-    }
+    @ApiModelProperty(value = "删除标志位,1未删除，0已删除")
+    private Integer iFlag;
 }

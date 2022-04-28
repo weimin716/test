@@ -2,10 +2,12 @@ package com.gdd.ylz.modules.edu.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gdd.ylz.common.base.UserController;
 import com.gdd.ylz.common.util.StringUtils;
 import com.gdd.ylz.constants.Constant;
 import com.gdd.ylz.modules.edu.entity.Category;
+import com.gdd.ylz.modules.edu.request.CategoryQueryRequest;
 import com.gdd.ylz.modules.edu.service.ICategoryService;
 import com.gdd.ylz.result.DataResult;
 import io.swagger.annotations.Api;
@@ -67,6 +69,19 @@ public class CategoryController extends UserController {
         categoryService.updateById(category);
         return DataResult.success();
     }
+    @GetMapping ("/page")
+    @ApiOperation(value = "删除课程分类", notes = "删除课程分类")
+    public DataResult categoryBypage(CategoryQueryRequest categoryQueryRequest){
+        IPage<Category> categoryIPage = categoryService.categoryByPage(categoryQueryRequest);
+        return DataResult.success(categoryIPage);
+    }
+
+    @GetMapping ("/detail/{id}")
+    @ApiOperation(value = "删除课程分类", notes = "删除课程分类")
+    public DataResult categoryDetail(@PathVariable("id")String id){
+        return DataResult.success(categoryService.getById(id));
+    }
+
 
 }
 
